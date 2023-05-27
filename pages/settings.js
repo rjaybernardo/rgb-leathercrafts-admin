@@ -59,7 +59,9 @@ function SettingsPage({ swal }) {
           >
             {products.length > 0 &&
               products.map((product) => (
-                <option value={product._id}>{product.title}</option>
+                <option value={product._id} key={product._id}>
+                  {product.title}
+                </option>
               ))}
           </select>
           <label>Shipping price (in usd)</label>
