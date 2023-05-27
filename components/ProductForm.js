@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import Spinner from '@/components/Spinner'
 import { ReactSortable } from 'react-sortablejs'
+import Image from 'next/image'
 
 export default function ProductForm({
   _id,
@@ -105,7 +106,7 @@ export default function ProductForm({
       />
       <label>Category</label>
       <select value={category} onChange={(ev) => setCategory(ev.target.value)}>
-        <option value=''>Uncategorized</option>
+        <option value=''>No Category</option>
         {categories.length > 0 &&
           categories.map((c) => (
             <option value={c._id} key={c._id}>
@@ -140,14 +141,23 @@ export default function ProductForm({
           setList={updateImagesOrder}
         >
           {!!images?.length &&
-            images.map((link) => (
-              <div
-                key={link}
-                className='h-24 bg-white p-4 shadow-sm rounded-sm border border-gray-200'
-              >
-                <img src={link} alt='' className='rounded-lg' />
-              </div>
-            ))}
+            images.map((link) => {
+              // console.log(link)
+              return (
+                <div
+                  key={`link`}
+                  className='h-24 bg-white p-4 shadow-sm rounded-sm border border-gray-200'
+                >
+                  <Image
+                    src={link}
+                    alt=''
+                    width={100}
+                    height={100}
+                    className='rounded-lg'
+                  />
+                </div>
+              )
+            })}
         </ReactSortable>
         {isUploading && (
           <div className='h-24 flex items-center'>
