@@ -145,15 +145,15 @@ export default function ProductForm({
               // console.log(link)
               return (
                 <div
-                  key={`link`}
-                  className='h-24 bg-white p-4 shadow-sm rounded-sm border border-gray-200'
+                  key={link.id}
+                  className=' bg-white p-4 shadow-sm rounded-sm border border-gray-200'
                 >
                   <Image
                     src={link}
                     alt=''
                     width={100}
                     height={100}
-                    className='rounded-lg'
+                    className='rounded-lg max-h-full'
                   />
                 </div>
               )
